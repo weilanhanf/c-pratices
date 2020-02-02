@@ -36,5 +36,4 @@ int main(){
 	process(a, b, add);
 	
 	return 0;
-
 }
