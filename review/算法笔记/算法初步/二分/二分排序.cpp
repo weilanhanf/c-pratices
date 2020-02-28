@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-	int a[10] = {1, 4, 3, 5, 2, 6, 7, 9, 8, 0};
+	int a[11] = {1, 4, 3, 5, 2, 6, 7, 9, 8, 0};
 	int temp, i, j, mid, low, high;
 	for(i=1;i<10;i++)
 	{
@@ -17,12 +17,12 @@ int main()
 		while(low<=high)
 		{
 			mid = (low+high)/2;
-			if(a[mid]>temp)
+			if(temp<a[mid])
 				high = mid-1;
 			else
 				low = mid+1;
 		}	
-		for(j=i-1;j>=low;j++)
+		for(j=i-1;j>=low;j--) // 看清for循环中是自加还是自减 
 			a[j+1] = a[j];
 		a[low] = temp;
 	}	
