@@ -64,18 +64,48 @@ bign add(bign a, bign b)
 	return c;
 }
 
+bign minu(bign a, bign b)
+{
+	bign c;
+	if(compare(a, b)==-1)//保证a>b否则出错 
+		swap(a,b);
+	
+	for(int i=0;i<a.len||i<b.len;i++)
+	{
+		if(a.d[i]<b.d[i])
+		{
+			a.d[i+1]--;
+			a.d[i] += 10;
+		}
+		c.d[c.len++]=a.d[i]-b.d[i];
+	}
+	while(c.len-1>=1&&c.d[c.len-1]==0)
+		c.len--;
+	return c;
+}
+
+
+void printf_bign(bign c)
+{
+	for(int i=c.len-1;i>=0;i--)
+		printf("%d", c.d[i]);
+	printf("\n");
+	return ;
+}
 
 
 int main()
 {
-	bign a, b, c;
+	bign a, b, c, d;
 	char str1[maxn], str2[maxn];
 	scanf("%s %s", str1, str2);
 	a = change(str1);
 	b = change(str2);
 	c = add(a, b);
-	for(int i=c.len-1;i>=0;i--)
-		printf("%d", c.d[i]);
-	printf("\n");
+	d = minu(a, b);
+	printf_bign(c); //两者相加 
+	printf_bign(d); //两者相减
+	
+	 
 	return 0;
 }
