@@ -4,7 +4,7 @@
 
 
 int main(){
-	char str1[] = "asdf";
+	char str1[10] = "asdf";
 	char str2[] = {'h', 'd', 'c', '\0'};
 	int a, b;
 	a = strlen(str1);
