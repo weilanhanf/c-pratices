@@ -1,47 +1,56 @@
 #include<iostream>
 #include<stdio.h>
-#include<string>
+#include<string.h>
 #include<algorithm>
 using namespace std;
 
 const int maxn=20;
 
 
-typedef struct word{
+struct word{
 	int id;
-	string letters;
-}word, words[maxn]; 
+	char letters[maxn];
+}words[maxn]=
+{
+	{1000, "face"},
+	{1001, "word"},
+	{1002, "help"},
+	{1003, "nose"},
 
-
+};
 
 
 int main()
 {
-//	
-//	words[0].id=1000;  words[0].letters="face"; 
-//	words[1].id=1001;  words[1].letters="word";
-//	words[2].id=1002;  words[2].letters="help";
-//	words[3].id=1003;  words[3].letters="nose";
-	
-//	char str[maxn], str1[maxn];
-	string str, str1; 
-	cin>>str;
-	cin>>str1;
-	str1=str;
-//	gets(str);
-//	gets(str1);
-	if(str1==str)
-		printf("==");
-	else
-		printf("!=");
-//	while(gets(str)!=NULL)
-//	{
-//		int flag=0;
-//		for(int i=0;i<4;i++)
-//		{
-//			
-//		}
-//	}
-	
+	int i, flag, word_len, k, len;
+	char str[10]; 
+
+	gets(str);
+	len = strlen(str);
+	for(i=0;i<len;i++)
+		if(str[i]>='A'&&str[i]<='Z')
+			str[i] += 32;
+	printf("变成小写后为%s,长度为%d\n", str, len);
+
+	for(k=0;k<4;k++)
+	{
+		word_len = strlen(words[i].letters);
+		flag = 0; 
+		for(i=0;i<word_len&&i<len;i++)
+			if(words[k].letters[i]!=str[i])
+				flag++;
+		if(flag==0)
+		{
+			printf("ID为%d, letters=%s\n", words[i].id, words[i].letters);
+			break;
+		}
+		else if(flag==1)
+		{
+			printf("flag=1, ID为%d, letters=%s\n", words[i].id, words[i].letters);
+			break;
+		}
+		else if(flag>=2)
+			continue;
+	}	
 	return 0;
 }
