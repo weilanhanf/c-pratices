@@ -1,6 +1,17 @@
 #include<string.h>
 #include<stdio.h>
 
+// 输入n打印以下n边图形：
+//   A
+//  B*B
+//  C***C
+// D*****D
+//E*******E
+// D*****D
+//  C***C
+//   B*B
+//    A
+
 
 int main()
 {
