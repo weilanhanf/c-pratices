@@ -59,7 +59,7 @@ int main()
 		for(i=0;i<=k;i++)
 			printf("%4d\n", prime[i]);
 	}
-	else if(sums>2008)
+	else if(sums>2006)
 	{
 		int a[maxn]={0};//prime表中需要剔除的元素 
 		int diff, t;
@@ -81,8 +81,10 @@ int main()
 		printf("diff=%d\n", diff);
 		
 		int flag;
+		int num = 1;
 		for(i=0;i<=k;i++)
 		{
+			printf("第%d个：", num++);
 			flag=0;//如果prime[i]剔除数组a中，则flag=1，默认不需要剔除 
 			for(j=0;j<t;j++)
 				if(prime[i]==a[j])
