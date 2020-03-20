@@ -85,7 +85,7 @@ void dpSubset(int arr[], int n, int S)
 int main()
 {
 	
-	int S = 1998; 
+	int S = 2006; 
 	int sums=0, n=0;
 	primeTable();
 	for(int i=0;i<num;i++)
