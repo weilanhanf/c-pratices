@@ -11,11 +11,11 @@ using namespace std;
 
 const int maxn=10000;
 int p[maxn]={0};
-int prime[maxn]={0};
+int prime[maxn]={0};//素数表 
 int num=0;
 
 
-void primeTable(int x)
+void primeTable(int x)//求解素数表 
 {
     for(int i=2;i<=x;i++)
     {
@@ -29,7 +29,7 @@ void primeTable(int x)
 }
 
 
-bool isPrime(int x)
+bool isPrime(int x)//判断是否为素数 
 {
 	for(int i=2;i<=sqrt(x);i++)
 		if(x%i==0)
@@ -45,7 +45,7 @@ int main()
 	scanf("%d", &x);
 	primeTable(x);
 	
-	if(isPrime(x)==false)
+	if(isPrime(x)==false)//如果x不是素数，直接退出 
 	{
 		printf("no\n");
 		return 0;
@@ -56,58 +56,54 @@ int main()
 	printf("\n");
 	
 	int sums=0, count=0;
-	int i=0, j=0;
+	int i=0, j=0;//i，j分别指向连续的几个素数的首尾 
 	int flag = false;
 	
-	while(!flag)
+	while(!flag) 
 	{
 		sums+=prime[j];
 		count++;
-		if(sums<x)
+		if(sums<x)//小于一直加 
 			j++;
-		else if(sums==x)
+		else if(sums==x)//恰好等于 
 		{
 			flag=true;
 			break;
 		}
-		else if(sums>x)
+		else if(sums>x)//找到大于x的sums和退出 
 			break;
 	}
-	for(;i<=j;i++)
-		printf("%d ", prime[i]);
-	printf("\nsums1=%d\n", sums);
+
 	
 	if(sums>x)
 	{
 		while(sums>x&&!flag&&count>1)
 		{
 			sums-=prime[i];
-			i++;
+			i++;//指针i右移 
 			count--;
 			if(sums==x&&count>1)
 			{
 				flag=true;
 				break;
 			}
-			else if(sums<x&&count<1)
+			else if(sums<x&&count>1)//指针i，j右移 
 			{
 				j++;
 				sums+=prime[j];
+				count++; 
 				continue;
 			}
 			
 		}
 		
 	}
+
 	
-	for(;i<=j;i++)
-		printf("%d ", prime[i]);
-	printf("\nsums2=%d\n", sums);
-	
-	if(flag==true)
+	if(flag==true)//i和j指向的数组打印 
 	{
-		for(;i<=j;i++)
-			printf("%d ", prime[i]);
+		for(int t=i;t<=j;t++)
+			printf("%d ", prime[t]);
 		printf("\nyes\n");
 	}
 	
